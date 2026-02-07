@@ -71,20 +71,20 @@ body.dark #sunIcon{display:none;}
 }
 .logo img { width:110%; height:110%; object-fit:cover; }
 
-/* AZƏRBAYCAN BAYRAĞI - sağ üst, yumru, kiçik və aşağı */
+/* AZƏRBAYCAN BAYRAĞI */
 .lang-btn {
     position: absolute;
-    top:42px;   /* bir az aşağıda */
+    top:42px;
     right:25px;
-    width:35px;  /* kiçik ölçü */
-    height:35px; /* kiçik ölçü */
+    width:35px;
+    height:35px;
 }
 .lang-btn img {
     width:100%;
     height:100%;
     object-fit:cover;
-    border-radius:50%;  /* yumru formaya gətirir */
-    box-shadow:0 3px 8px rgba(0,0,0,0.2); /* yumruya dərinlik */
+    border-radius:50%;
+    box-shadow:0 3px 8px rgba(0,0,0,0.2);
 }
 
 /* SEARCH */
@@ -96,21 +96,12 @@ body.dark #sunIcon{display:none;}
 .search-box input{
     flex:1;
     padding:10px 12px;
-    border-radius:10px 0 0 10px;
+    border-radius:10px;
     border:1px solid #ccc;
     outline:none;
+    font-size:16px;
 }
 body.dark .search-box input{border:1px solid #555; background:#1e1e1e; color:#fff;}
-.search-box button{
-    padding:10px 15px;
-    border:none;
-    border-radius:0 10px 10px 0;
-    background:#2fa4aa;
-    color:#fff;
-    cursor:pointer;
-    font-weight:bold;
-}
-.search-box button:hover{background:#1d7c80;}
 
 /* PRODUCT GRID */
 .product-grid{
@@ -163,8 +154,7 @@ body.dark .product-card{background:rgba(30,30,30,0.95); color:#fff;}
 
 <!-- SEARCH -->
 <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Axtar...">
-    <button onclick="searchProducts()">Axtar</button>
+    <input type="text" id="searchInput" placeholder="Axtar..." oninput="liveSearch()">
 </div>
 
 <!-- PRODUCTS -->
@@ -216,10 +206,10 @@ function displayProducts(list){
 }
 displayProducts(products);
 
-/* SEARCH FUNCTION */
-function searchProducts(){
+/* LIVE SEARCH */
+function liveSearch() {
     const term = document.getElementById("searchInput").value.toLowerCase();
-    const filtered = products.filter(p=>p.name.toLowerCase().includes(term));
+    const filtered = products.filter(p => p.name.toLowerCase().includes(term));
     displayProducts(filtered);
 }
 </script>
