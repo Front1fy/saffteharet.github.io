@@ -9,9 +9,18 @@
 
 <style>
 *{box-sizing:border-box;}
-body{margin:0;font-family:Arial,sans-serif;background:#f4fbff;color:#222;transition:.3s;}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4fbff;
+    color:#222;
+    transition:.3s;
+}
 body.light{background:#f4fbff;color:#222;}
-body.dark{background:linear-gradient(135deg,#0a1a3b,#13264f,#1b3270,#1b3270);color:#fff;}
+body.dark{
+    background:linear-gradient(135deg,#0a1a3b,#13264f,#1b3270);
+    color:#fff;
+}
 
 /* HEADER */
 .header{
@@ -22,196 +31,109 @@ body.dark{background:linear-gradient(135deg,#0a1a3b,#13264f,#1b3270,#1b3270);col
     position:relative;
     display:flex;
     align-items:center;
-    justify-content:flex-start;
     padding:0 20px;
-    gap:20px;
 }
 
-/* THEME TOGGLE */
+/* THEME */
 .theme-toggle{
-    width:40px;
-    height:40px;
-    border-radius:50%;
+    width:40px;height:40px;border-radius:50%;
     background:rgba(255,255,255,.25);
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:flex;align-items:center;justify-content:center;
     cursor:pointer;
-    transition:.3s;
 }
-.theme-toggle i{
-    color:#fff;
-    font-size:18px;
-    transition:.3s;
-    position:absolute;
-}
-#moonIcon{display:none;}
-#sunIcon{display:none;}
+.theme-toggle i{color:#fff;font-size:18px;position:absolute;}
+#moonIcon,#sunIcon{display:none;}
 body.light #sunIcon{display:block;}
-body.light #moonIcon{display:none;}
 body.dark #moonIcon{display:block;}
-body.dark #sunIcon{display:none;}
 
 /* LOGO */
-.logo {
-    width:100px;
-    height:100px;
-    background:#fff;
-    border-radius:50%;
+.logo{
+    width:100px;height:100px;
+    background:#fff;border-radius:50%;
     position:absolute;
-    left:50%;
-    top:45px;
+    left:50%;top:45px;
     transform:translateX(-50%);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+.logo img{width:110%;height:110%;object-fit:cover}
+
+/* LANG */
+.lang-btn{
+    position:absolute;right:25px;top:42px;
+    width:35px;height:35px;
+}
+.lang-btn img{
+    width:100%;height:100%;
+    border-radius:50%;
+}
+
+/* ONLY MENU BUTTON */
+.menu-area{
+    height:calc(100vh - 120px);
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-    overflow:hidden;
-    z-index:1;
 }
-.logo img { width:110%; height:110%; object-fit:cover; }
-
-/* AZƏRBAYCAN BAYRAĞI */
-.lang-btn {
-    position: absolute;
-    top:42px;
-    right:25px;
-    width:35px;
-    height:35px;
-}
-.lang-btn img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:50%;
-    box-shadow:0 3px 8px rgba(0,0,0,0.2);
-}
-
-/* SEARCH */
-.search-box{
-    max-width:360px;
-    margin:50px auto 20px;
-    display:flex;
-}
-.search-box input{
-    flex:1;
-    padding:10px 12px;
-    border-radius:10px;
-    border:1px solid #ccc;
-    outline:none;
-    font-size:16px;
-}
-body.dark .search-box input{border:1px solid #555; background:#1e1e1e; color:#fff;}
-
-/* PRODUCT GRID */
-.product-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-    max-width:800px;
-    margin:20px auto 50px;
-    padding:0 10px;
-}
-.product-card{
-    background:rgba(255,255,255,0.95);
-    border-radius:12px;
-    padding:10px;
-    box-shadow:0 6px 18px rgba(0,0,0,.15);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.menu-btn{
+    background:#2fa4aa;
+    color:#fff;
+    text-decoration:none;
+    padding:18px 36px;
+    border-radius:40px;
+    font-size:18px;
+    font-weight:bold;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
     transition:.3s;
-    color:#000;
 }
-body.dark .product-card{background:rgba(30,30,30,0.95); color:#fff;}
-.product-card img{
-    width:100%;
-    height:150px;
-    object-fit:cover;
-    border-radius:10px;
+.menu-btn:hover{
+    transform:translateY(-3px);
+    background:#249398;
 }
-.product-card h3{margin:8px 0 4px;font-size:16px;text-align:center;}
-.product-card p{margin:4px 0;font-size:14px;text-align:center;}
-.product-card .price{font-weight:bold;margin-top:5px;color:#2fa4aa;}
-.product-card:hover{transform:translateY(-3px);}
 </style>
 </head>
-<body>
+
+<body class="light">
+
 <div class="header">
     <div class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon" id="moonIcon"></i>
         <i class="fas fa-sun" id="sunIcon"></i>
     </div>
-    <div class="logo-wrap">
-        <div class="logo">
-            <img src="ımg/WhatsApp Image 2026-02-07 at 16.54.11.jpeg" alt="saff">
-        </div>
+
+    <div class="logo">
+        <img src="ımg/WhatsApp Image 2026-02-07 at 16.54.11.jpeg">
     </div>
+
     <div class="lang-btn">
-        <img src="ımg/images.png" alt="Azərbaycan Bayrağı">
+        <img src="ımg/images.png">
     </div>
 </div>
 
-<!-- SEARCH -->
-<div class="search-box">
-    <input type="text" id="searchInput" placeholder="Axtar..." oninput="liveSearch()">
-</div>
-
-<!-- PRODUCTS -->
-<div class="product-grid" id="productGrid">
+<!-- SADECE BUTTON -->
+<div class="menu-area">
+    <a href="index2.html" class="menu-btn">
+        🍽 Menyulara baxın
+    </a>
 </div>
 
 <script>
-/* THEME TOGGLE */
-const toggle = document.getElementById("themeToggle");
-const bodyEl = document.body;
+const toggle=document.getElementById("themeToggle");
+const bodyEl=document.body;
+
 if(localStorage.getItem("theme")==="dark"){
-    bodyEl.classList.add("dark");
-    bodyEl.classList.remove("light");
-}else{
-    bodyEl.classList.add("light");
-    bodyEl.classList.remove("dark");
+    bodyEl.classList.replace("light","dark");
 }
-toggle.onclick = () => {
+
+toggle.onclick=()=>{
     bodyEl.classList.toggle("dark");
     bodyEl.classList.toggle("light");
-    localStorage.setItem("theme",bodyEl.classList.contains("dark")?"dark":"light");
+    localStorage.setItem(
+        "theme",
+        bodyEl.classList.contains("dark")?"dark":"light"
+    );
 };
-
-/* PRODUCT DATA */
-const products = [];
-for(let i=1;i<=120;i++){
-    products.push({
-        name:`Məhsul ${i}`,
-        price:(Math.random()*50+1).toFixed(2) + " AZN",
-        usage:"İstifadə qaydası: gündə 1 dəfə",
-        img:"https://via.placeholder.com/200x150?text=Məhsul+"+i
-    });
-}
-
-const productGrid = document.getElementById("productGrid");
-function displayProducts(list){
-    productGrid.innerHTML = "";
-    list.forEach(p=>{
-        const card = document.createElement("div");
-        card.classList.add("product-card");
-        card.innerHTML = `
-            <img src="${p.img}" alt="${p.name}">
-            <h3>${p.name}</h3>
-            <p class="usage">${p.usage}</p>
-            <p class="price">${p.price}</p>
-        `;
-        productGrid.appendChild(card);
-    });
-}
-displayProducts(products);
-
-/* LIVE SEARCH */
-function liveSearch() {
-    const term = document.getElementById("searchInput").value.toLowerCase();
-    const filtered = products.filter(p => p.name.toLowerCase().includes(term));
-    displayProducts(filtered);
-}
 </script>
+
 </body>
 </html>
