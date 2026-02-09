@@ -11,7 +11,14 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   background:#f5f7fb;
   color:#222;
+  transition:.3s;
 }
+body.light{background:#f5f7fb;color:#222;}
+body.dark{
+  background:linear-gradient(135deg,#0a1a3b,#13264f,#1b3270);
+  color:#fff;
+}
+
 
 /* === ÜST HİSSƏ (1-ci səhifənin stilindən çıxmadan) === */
 .header{
@@ -21,6 +28,8 @@ body{
   border-bottom-left-radius:28px;
   border-bottom-right-radius:28px;
 }
+/* qaranlıq rejimdə header mavı qalsın */
+
 
 @keyframes shake{
   0%{transform:translateX(0)}
@@ -160,6 +169,10 @@ body{
 <div class="header">
   <div class="header-top">
     <div class="logo">Menyu</div>
+    <div class="theme-toggle" onclick="toggleTheme()" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <i class="fa-solid fa-moon" id="moonIcon"></i>
+      <i class="fa-solid fa-sun" id="sunIcon" style="display:none"></i>
+    </div>
     <div class="cart-btn" onclick="toggleCart()">
       <i class="fa-solid fa-cart-shopping"></i>
       <span class="cart-count" id="cartCount">0</span>
@@ -269,6 +282,29 @@ function searchProducts(){
     p.style.display=p.dataset.name.toLowerCase().includes(val)?'block':'none';
   });
 }
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
+  const moon=document.getElementById('moonIcon');
+  const sun=document.getElementById('sunIcon');
+  if(document.body.classList.contains('dark')){
+    moon.style.display='none';
+    sun.style.display='block';
+    localStorage.setItem('theme','dark');
+  }else{
+    sun.style.display='none';
+    moon.style.display='block';
+    localStorage.setItem('theme','light');
+  }
+}
+
+if(localStorage.getItem('theme')==='dark'){
+  document.body.classList.remove('light');
+  document.body.classList.add('dark');
+  document.getElementById('moonIcon').style.display='none';
+  document.getElementById('sunIcon').style.display='block';
+}
+
 </script>
 
 </body>
