@@ -110,9 +110,12 @@ body.dark .price{
 }
 .product img{
   width:100%;
-  height:120px;
-  object-fit:cover;
+  height:100px; /* əvvəl 120px idi, biraz kiçildildi */
+  object-fit:contain; /* şəkil çərçivəyə sığacaq, deformasiya olmadan */
   border-radius:12px;
+  background:#f0f0f0; /* şəkil şəffafdırsa fon görünəcək */
+}
+
 }
 .product h3{font-size:14px;margin:8px 0 4px}
 .product p{font-size:12px;color:#555}
